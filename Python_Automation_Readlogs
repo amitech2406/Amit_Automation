@@ -1,0 +1,223 @@
+#!/usr/bin/python
+
+import re
+import openpyxl #To insert batch timings into excel
+from openpyxl import workbook
+from openpyxl import load_workbook
+from datefile import datetime
+
+#Asking input to User
+print("Please enter log file directory")
+log_file_path = input()
+print("Please enter excel file path and name for example C:\.....\Results.xlsx")
+excel_file_path = input()
+
+#Declare varibales to search batch names in the log
+string_to_search_1 = "Start|SUCCESS"
+string_to_search_2 = "Batch1|STARTED"
+string_to_search_3 = "Batch1|SUCCESS"
+string_to_search_4 = "Batch2|STARTED"
+string_to_search_5 = "Batch2|SUCCESS"
+string_to_search_6 = "Batch3|STARTED"
+string_to_search_7 = "Batch3|SUCCESS"
+string_to_search_8 = "Batch4|STARTED"
+string_to_search_9 = "Batch4|SUCCESS"
+string_to_search_10 = "Batch5|STARTED"
+string_to_search_11 = "Batch5|SUCCESS"
+string_to_search_12 = "Batch6|STARTED"
+string_to_search_13 = "Batch6|SUCCESS"
+string_to_search_14 = "Batch7|STARTED"
+string_to_search_15 = "Batch7|SUCCESS"
+string_to_search_16 = "Batch8|STARTED"
+string_to_search_17 = "Batch8|SUCCESS"
+string_to_search_18 = "Batch9|STARTED"
+string_to_search_19 = "Batch9|SUCCESS"
+
+line_number=0
+#open excel sheet
+wb = openpyxl.Workbook()
+sheet = wb.active
+a1 = sheet['A1']
+a1.value = "Jobs"
+
+b1 = sheet['B1']
+b1.value = "start time"
+
+c1 = sheet['C1']
+c1.value = "End Time"
+
+d1 = sheet['D1']
+d1.value = "Time Taken(Min)"
+
+a2 = sheet['A2']
+a2.value = "Application POD creation"
+
+a3 = sheet['A3']
+a3.value = "Batch1"
+
+a4 = sheet['A4']
+a4.value = "Batch2"
+
+a5 = sheet['A5']
+a5.value = "Batch3"
+
+a6 = sheet['A6']
+a6.value = "Batch4"
+
+a7 = sheet['A7']
+a7.value = "Batch5"
+
+a8 = sheet['A8']
+a8.value = "batch6"
+
+a9 = sheet['A9']
+a9.value = "Batch7"
+
+a10 = sheet['A10']
+a10.value = "Batch8"
+
+a11 = sheet['A11']
+a11.value = "Batch9"
+
+wb.save(excel_file_path)
+with open(log_file_path,'r') as read_obj:
+        for line in read_obj:
+                line_number +=1
+                if string_to_search_1 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C2']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                 if string_to_search_2 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B3']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                  if string_to_search_3 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C3']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                   if string_to_search_4 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B4']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                    if string_to_search_5 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C4']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                    if string_to_search_6 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B5']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                     if string_to_search_7 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C5']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                     if string_to_search_8 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B6']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                      if string_to_search_9 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C6']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                       if string_to_search_10 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B7']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                       if string_to_search_11 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C7']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                       if string_to_search_12 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B8']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_13 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C8']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_14 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B9']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_15 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C9']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_16 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B10']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_17 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C10']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_18 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['B11']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+                        if string_to_search_19 in line:
+                        print(line.split("|")[9])
+                        datetime_object = datetime.strptime(line.split("|")[9],'%Y%m%d%H%M%S')
+                        print(datetime_object)
+                        wcell1=sheet['C11']
+                        wcell1.value = datetime_object
+                        wb.save(excel_file_path)
+       read_obj.close()
+       wb.save(excel_file_path)                 
+                        
+                        
+                        
